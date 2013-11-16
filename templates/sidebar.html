@@ -1,0 +1,24 @@
+<ul class="nav nav-list">
+  <li class="nav-header">Sub Forums</li>
+  <li class="active"><a href="#">Home</a></li>
+  <li><a href="#">Fundamentals</a></li>
+  <li><a href="#">Estimates</a></li>
+  <li><a href="#">Deals</a></li>
+  <li><a href="#">Corax</a></li>
+  <li><a href="#">Economics</a></li>
+</ul>
+
+
+<ul>
+<li class="nav-header">Log in</li>
+        {% if user and user.is_authenticated() %}
+			<li>Welcome <strong>{{user.login}}</strong></li>
+			<li ><a href="/dashboard/{{user.id}}">My Dashboard</a></li>
+           <li><a href="{{ url_for('logout_view') }}">Logout</a></li>
+        {% else %}
+          <li>   Welcome anonymous user!</li>
+          <li><a href="{{ url_for('login_view') }}">Login</a> </li>
+ 		  <li><a href="{{ url_for('register_view') }}">Register</a></li>
+        {% endif %}
+
+</ul>

@@ -1,0 +1,15 @@
+<td>
+	 {% if issue.IssueReviewSchedule %}
+	 
+			{% for schedule in issue.IssueReviewSchedule if schedule.schedule_type.short_name == 'NR'%}
+				
+	   
+			<strong> {{ schedule.schedule_date.strftime('%Y-%m-%d') }}</strong>
+		
+		
+		{%	endfor %}			
+	{% else %}
+	 <p class="text-warning">N/A</p>
+	 {% endif %}
+	
+</td>

@@ -1,0 +1,36 @@
+		<table id="issues" class="table-hover table-striped table-bordered table-condensed">
+		    <caption><h5>Issue Details</h5></caption>
+			  <thead>
+			        <tr>
+						<th >CQF ID</th>
+			            <th >Title</th>
+		
+			            <th >Severity</th>
+			            <th >Vertical</th>           
+
+						<th >Clients</th>
+						<th> Status </th>
+				
+
+			        </tr>
+			    </thead>
+		<tbody>
+		
+
+		<tr>
+			<td> <a href='/issue/{{issue.id}}/'>{{issue.id}}</a></td>
+			<td> {{issue.title}}</td>
+		
+			<td> {{issue.severity}}</td>
+			
+			
+				{% include 'issue_vertical.html' %}
+			
+			{% include 'issue_client.html' %}
+
+		{% include 'issue_status.html' %}
+		
+				
+		</tr>
+		</tbody>
+		</table>

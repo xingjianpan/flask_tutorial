@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block title %}HomePage{% endblock %}
+
+{% block content %}
+
+
+
+<div>
+    {% if issues_as_rm %}
+      
+		{% include 'dashboard_issue_rm.html'%}
+		    
+	
+	{% else %}
+			<p>nothing.</p>
+  
+
+    {% endif %}
+</div>
+
+
+<br>
+<br>		
+<hr>
+
+
+<div>
+    {% if issues_as_ao %}
+      
+		{% include 'dashboard_issue_ao.html'%}
+		    
+	
+	{% else %}
+			<p>nothing.</p>
+  
+
+    {% endif %}
+</div>
+
+
+<br>
+<br>		
+<hr>
+
+
+<div>
+    {% if issues_invited %}
+      
+		{% include 'dashboard_issue_invited.html'%}
+		    
+	
+	{% else %}
+			<p>nothing.</p>
+  
+
+    {% endif %}
+</div>
+
+
+		
+
+{% endblock %}

@@ -1,0 +1,11 @@
+<td> {% if issue.verticals.first()  %} 
+	 {% for vertical in issue.verticals %}
+	  
+<a href="/vertical/{{vertical.id}}"><span class="label">{{vertical.short_name}}</span></a>
+	{% endfor%}
+	
+	{% else %}
+	<p class="text-warning">N/A</p>
+	{% endif %}
+	
+</td>

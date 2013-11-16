@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<head>
+    {% block head %}
+    
+	<link  href="{{ url_for('static', filename='bootstrap.min.css')}}" rel="stylesheet" media="screen">	
+    <link href="/static/bootstrap-editable/css/bootstrap-editable.css" rel="stylesheet">
+	<link href="{{url_for('static', filename='mycssfile.css')}}" rel="stylesheet" >
+	<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+	<style>
+	      body {
+	        padding-top: 60px;
+	      }
+	</style>
+	
+    <title>{% block title %}{% endblock %} </title>
+    {% endblock %}
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+</head>
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+	      <div class="navbar-inner">
+	        <div class="container">
+	          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	          </a>
+	          <a class="brand" href="#">Content Quality Forum</a>
+	          <div class="nav-collapse collapse">
+	            <ul class="nav">
+	              <li class="active"><a href="/">Home</a></li>
+				  <li ><a href="/admin">Admin</a></li>
+		
+			
+		       
+					
+	            </ul>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+	
+	
+		<div class="container-fluid">
+			<div class="row-fluid">
+
+
+					<div class="span9 ">
+
+					{% block content %} 
+
+					{% endblock %}
+
+					</div>
+
+					<div class="span2 ">
+					<!--Sidebar content-->
+
+				{% include "sidebar.html" %}
+
+					</div>
+ 
+				</div>
+		</div>
+		
+	<script src="{{ url_for('static', filename='jquery.min.js')}}"></script>
+	<script src="{{ url_for('static', filename='bootstrap.min.js')}}"></script>
+	<script src="/static/bootstrap-editable/js/bootstrap-editable.js"></script>
+</body>
+</html>

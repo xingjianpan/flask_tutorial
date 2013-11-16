@@ -1,0 +1,76 @@
+<h1> <p class="text-left"><a href='/issue/{{issue.id}}/'> #{{issue.id}} {{issue.title}} </p></a></h1>
+
+
+
+<span class="label label-warning">{{issue.severity}}</span>
+
+{% include 'issue_vertical.html' %}
+{% include 'issue_status.html' %}
+<br>{% include 'issue_client.html' %}
+
+
+<h3>Contributors</h3>	
+{% if issue_contributors %}
+
+<table class="table table-bordered table-condensed">
+{% for each in issue_contributors %}
+
+
+ 
+
+	<tr>
+		<td>{{each.contributor_type.long_name}}</td>
+		<td>{{each.contributor.login}}
+		<td>{{each.contributor.email}}</td>
+	</tr>
+
+
+{% endfor %}
+</table>
+{% endif %}
+
+
+
+<h4>Invitees</h4>	
+
+<table class="table table-bordered table-condensed">
+{% for each in issue.invitees %}
+
+<tr>
+
+	<td>{{each.login}}
+	<td>{{each.email}}</td>
+</tr>
+ 
+
+
+{% endfor %}
+</table>
+
+
+
+		
+<h3>Timeline</h3>	
+{% if issue_timeline %}
+
+<table class="table table-bordered table-condensed">
+{% for each in issue_timeline %}
+
+
+ 
+
+	<tr>
+		<td>{{each.status_date}}</td>
+		<td>{{each.issuestatus.long_name}}</td>
+	
+	</tr>
+
+
+{% endfor %}
+</table>
+{% endif %}
+
+		
+</tr>
+</tbody>
+</table>

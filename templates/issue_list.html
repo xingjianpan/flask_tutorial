@@ -1,0 +1,47 @@
+	<table id="issues" class="table-hover table-striped table-bordered table-condensed">
+	    <caption><h5>Issue List</h5></caption>
+	    <thead>
+	        <tr>
+				<th >CQF ID</th>
+	            <th >Title</th>
+	            <th >Severity</th>
+	            <th >Vertical</th>           
+	         	
+				<th >Clients</th>
+				<th> Status </th>
+				<th> Next Review Date</th>
+				<th> Forum </th>
+
+	        </tr>
+	    </thead>
+	<tbody>
+	
+	{% for issue in issues %}	
+	<tr>
+		<td> <a href='/issue/{{issue.id}}/'>{{issue.id}}</a></td>
+		<td> {{issue.title}}</td>
+		<td>
+			
+		<a href="/severity/{{issue.severity_id}}"> 	<span class="label label-warning">{{issue.severity if issue.severity != None}}</span></a>
+		</td>
+		
+		
+		{% include 'issue_vertical.html' %}
+		{% include 'issue_client.html' %}
+		
+			{% include 'issue_status.html' %}
+		
+		
+
+			{% include 'issue_next_review_date.html' %}
+		<td>
+			 	<a href="/forum/{{issue.quality_forum_id}}"><span class="label label-info">{{issue.quality_forum.short_name if issue.quality_forum.short_name != None}}</span></a>
+
+		</td>
+			
+		
+	</tr>
+
+		{% endfor %}
+	</tbody>
+	</table>

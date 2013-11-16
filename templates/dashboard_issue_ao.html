@@ -1,0 +1,86 @@
+<table id="issues" class="table-hover table-striped table-bordered table-condensed">
+    <caption><h5>Issues I am Accountable Owner</h5></caption>
+    <thead>
+        <tr>
+			<th >CQF ID</th>
+            <th >Title</th>
+            <th >Severity</th>
+            <th >Vertical</th>           
+         	
+			<th >Clients</th>
+			<th> Status </th>
+			<th> Next Review Date</th>
+			<th> Forum </th>
+
+        </tr>
+    </thead>
+<tbody>
+
+{% for issue in issues_as_ao %}	
+<tr>
+	<td> <a href='/issue/{{issue.id}}/'>{{issue.id}}</a></td>
+	<td> {{issue.title}}</td>
+	<td>
+		
+	<a href="/severity/{{issue.severity_id}}"> 	<span class="label label-warning">{{issue.severity if issue.severity != None}}</span></a>
+	</td>
+	
+	
+	<td> {% if issue.verticals.first()  %} 
+		 {% for vertical in issue.verticals %}
+		  
+	<a href="/vertical/{{vertical.id}}"><span class="label">{{vertical.short_name}}</span></a>
+		{% endfor%}
+		
+		{% else %}
+		<p class="text-warning">N/A</p>
+		{% endif %}
+		
+	</td>
+	<td> 
+	
+		{% if issue.clients.first() %} 
+
+		{% for client in issue.clients %}
+	
+		<a href="/client/{{client.id}}">	<span class="label label-important">{{client.short_name}}</span></a>
+		 {% endfor %}
+		{% else %}
+		
+		<p class="text-warning">N/A</p>
+		{% endif %}
+	
+	 </td>
+	<td>
+		
+	<a href="/status/{{issue.issue_status_id}}">	 <span class="label label-info">{{issue.issue_status if issue.issue_status != None}}</span></a>
+	
+	</td>
+	
+	<td>
+		 {% if issue.IssueReviewSchedule %}
+		 
+				{% for schedule in issue.IssueReviewSchedule if schedule.schedule_type.short_name == 'NR'%}
+					
+		   
+				<strong> {{ schedule.schedule_date.strftime('%Y-%m-%d') }}</strong>
+			
+			
+			{%	endfor %}			
+		{% else %}
+		 <p class="text-warning">N/A</p>
+		 {% endif %}
+		
+	</td>	
+	
+	<td>
+		 	<a href="/forum/{{issue.quality_forum_id}}"><span class="label label-info">{{issue.quality_forum.short_name if issue.quality_forum.short_name != None}}</span></a>
+
+	</td>
+		
+	
+</tr>
+
+	{% endfor %}
+</tbody>
+</table>

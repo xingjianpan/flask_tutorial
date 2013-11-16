@@ -1,0 +1,29 @@
+hello world!
+
+{% for each in s %}
+
+<h3>{{ each}}</h3>
+<p>{{each.CountryCode}}</p>
+<p>{{each.CountryName}}</p>
+
+
+
+{% endfor %}
+
+
+{% for each in users %}
+{{ each.username }}
+{% endfor %}
+
+<form action="/register" method="POST">
+<tr>
+<td><input type="input" name="username"  /> </td>
+<td><input type="input" name="email"  /> </td>
+<td><input type="checkbox" name="accept_rules"  /> </td>
+<td><input type="submit" value="Submit" /></td>
+</tr>
+</form>
+
+
+
+

@@ -1,0 +1,14 @@
+	<td> 
+	
+		{% if issue.clients.first() %} 
+
+		{% for client in issue.clients %}
+	
+		<a href="/client/{{client.id}}">	<span class="label label-important">{{client.short_name}}</span></a>
+		 {% endfor %}
+		{% else %}
+		
+		<p class="text-warning">N/A</p>
+		{% endif %}
+	
+	 </td>
